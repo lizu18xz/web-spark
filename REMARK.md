@@ -49,6 +49,12 @@ HADOOP_CONF_DIR=/home/hadoop/app/hadoop-2.6.0-cdh5.7.0
 
 ### 依賴
 ```
+因为打包完成后lib下面会包含所有的包,包括spark相关,但是会引起很多jar包冲突的问题,所以我们需要排除spark相关的jar包。当在
+服务器运行的时候,我们安装的spark已经提供了那些包,因此我们
+找到jar包下的MANIFEST.MF文件,里面有我们打包完成后启动web项目的依赖Class-Path: 
+web-spark-1.0-SNAPSHOT.jar\META-INF\MANIFEST.MF
+
+
 获取lib,不包含spark相关的
 cp lib/spring-boot-starter-web-2.0.2.RELEASE.jar lib/spring-boot-starter-json-2.0.2.RELEASE.jar tmp
 cp lib/jackson-datatype-jdk8-2.9.5.jar lib/jackson-datatype-jsr310-2.9.5.jar lib/jackson-module-parameter-names-2.9.5.jar lib/spring-boot-starter-tomcat-2.0.2.RELEASE.jar tmp
