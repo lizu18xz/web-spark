@@ -123,6 +123,27 @@ http://192.168.76.142:8088/cluster/scheduler
 
 ```
 
+### join测试
+```text
+val spark = SparkSession.builder()
+      .config("spark.sql.shuffle.partitions",100)//设置并行度100
+      .getOrCreate()
+修改脚本设置两个并行度
+
+spark-submit --master yarn \
+--name web-spark \
+--jars $(echo /home/hadoop/app/spark-2.2.0-bin-2.6.0-cdh5.7.0/jars/*.jar | tr ' ' ',') \
+--class com.demo.WebApplication \
+--executor-memory 1G \
+--num-executors 1 \
+--conf spark.sql.shuffle.partitions=2
+/home/hadoop/jars/web-spark-1.0-SNAPSHOT.jar
+
+
+```
+
+
+
 ```text
 后续完善为具体的功能!TODO
 

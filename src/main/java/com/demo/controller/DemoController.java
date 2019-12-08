@@ -23,4 +23,12 @@ public class DemoController {
         demoService.test(path,outPut);
     }
 
+
+    @GetMapping("/join")
+    public void join(@RequestParam("path") String path){
+
+        demoService.join(path);
+    }
+
+
 }

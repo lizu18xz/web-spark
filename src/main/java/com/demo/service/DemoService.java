@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import com.demo.JoinUtils;
 import com.demo.ParquetUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,19 @@ public class DemoService {
         }).start();
 
     }
+
+
+    public void join(String path){
+        log.info("join~~~");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                JoinUtils joinUtils=new JoinUtils();
+                joinUtils.joinWrite(path);
+            }
+        }).start();
+
+    }
+
 
 }
