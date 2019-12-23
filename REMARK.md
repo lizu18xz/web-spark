@@ -130,13 +130,24 @@ val spark = SparkSession.builder()
       .getOrCreate()
 修改脚本设置两个并行度
 
+
+
 spark-submit --master yarn \
 --name web-spark \
 --jars $(echo /home/hadoop/app/spark-2.2.0-bin-2.6.0-cdh5.7.0/jars/*.jar | tr ' ' ',') \
 --class com.demo.WebApplication \
 --executor-memory 1G \
 --num-executors 1 \
---conf spark.sql.shuffle.partitions=2
+/home/hadoop/jars/web-spark-1.0-SNAPSHOT.jar
+
+
+spark-submit --master yarn \
+--name web-spark \
+--jars $(echo /home/hadoop/app/spark-2.2.0-bin-2.6.0-cdh5.7.0/jars/*.jar | tr ' ' ',') \
+--class com.demo.WebApplication \
+--executor-memory 1G \
+--num-executors 1 \
+--conf spark.sql.shuffle.partitions=4 \
 /home/hadoop/jars/web-spark-1.0-SNAPSHOT.jar
 
 

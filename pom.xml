@@ -72,7 +72,11 @@
         </dependency>
         <!--add scala dependency end-->
 
-
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
 
         <!-- 导入spark的依赖 -->
         <dependency>

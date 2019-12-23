@@ -41,18 +41,18 @@ class JoinUtils {
       Row(lines(0),lines(1))
     }),struct)
 
-    df.createOrReplaceTempView("join02")
+    df2.createOrReplaceTempView("join02")
 
-    val resultDf=sparkSession.sqlContext.sql("select a.card card1,b.card card2 from join01 a left join join02 b on a.card=b.card");
+    val resultDf=sparkSession.sqlContext.sql("select a.col01 card01,b.col01 card02 from join01 a left join join02 b on a.col01=b.col01");
 
     //写入mysql
     resultDf.write
         .format("jdbc")
-        .option("url","jdbc:mysql://10.45.150.81:3306/test")
-        .option("dbtable","xxxx")
+        .option("url","jdbc:mysql://114.67.67.44:3306/dalizu")
+        .option("dbtable","join_test")
         .option("user","root")
         .option("password","root123")
-        .option("numPartitions","1")  //加上此参数,只会产生一个分区,产生一个数据库连接
+        //.option("numPartitions","1")  //加上此参数,只会产生一个分区,产生一个数据库连接
       .save()
 
   }
