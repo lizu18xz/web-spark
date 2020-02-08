@@ -2,6 +2,7 @@ package com.demo.service;
 
 import com.demo.JoinUtils;
 import com.demo.ParquetUtils;
+import com.demo.UDFUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,18 @@ public class DemoService {
             public void run() {
                 JoinUtils joinUtils=new JoinUtils();
                 joinUtils.joinWrite(path);
+            }
+        }).start();
+
+    }
+
+    public void udf(){
+        log.info("udf~~~");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                UDFUtils udfUtils=new UDFUtils();
+                udfUtils.select();
             }
         }).start();
 

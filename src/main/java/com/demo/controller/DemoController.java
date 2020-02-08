@@ -30,5 +30,11 @@ public class DemoController {
         demoService.join(path);
     }
 
+    @GetMapping("/udf")
+    public void udf(){
+
+        demoService.udf();
+    }
+
 
 }
