@@ -78,7 +78,7 @@
             <version>5.1.46</version>
         </dependency>
 
-        <!-- 导入spark的依赖 -->
+        <!-- 导入spark的依赖 provided  如果需要本地调试改为 compile-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
@@ -101,7 +101,7 @@
                     <artifactId>jackson-databind</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
 
 
@@ -115,7 +115,7 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.11</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>

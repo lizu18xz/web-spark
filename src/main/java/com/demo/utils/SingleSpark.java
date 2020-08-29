@@ -1,5 +1,6 @@
 package com.demo.utils;
 
+import org.apache.spark.SparkConf;
 import org.apache.spark.sql.SparkSession;
 
 /**
@@ -20,8 +21,12 @@ public class SingleSpark {
             synchronized (SingleSpark.class){
 
                 if(sparkSession==null){
+
+                    SparkConf sparkConf=new SparkConf();
+                    sparkConf.set("spark.cores.max", "2");
                     sparkSession=SparkSession.builder()
-                            /*.master("local[5]")*/
+                            .config(sparkConf)
+                            .master("local[5]")
                             .getOrCreate();
                 }
 
