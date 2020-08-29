@@ -405,3 +405,22 @@ spark-submit --master yarn \
 ```
 
 ### mvn dependency:tree -Dverbose> dependency.log
+
+
+### shuffle算子
+```text
+select depton,count(1) from emp e group by  e.depton
+(10,v)
+(10,v)
+(20,v)
+(30,v)
+相同的depton分到一个reduce里面,然后在reduce里面完成count操作
+
+join 根据相同的条件来组织数据
+select a.*,b.* from a join b on a.id=b.id;
+a:(id,a.*)
+b:(id,b.*)
+按照id做shuffle,相同的id分发到一个reduce上面去,然后在reduce完成join操作
+
+
+```
