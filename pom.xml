@@ -75,7 +75,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>8.0.28</version>
         </dependency>
 
         <!-- 导入spark的依赖 provided  如果需要本地调试改为 compile-->
